@@ -11535,7 +11535,7 @@
           "version_info": "2020-02-26T03:15:34Z/29"
         },
         {
-          "last_updated": "2020-02-26T07:52:53.514Z",
+          "last_updated": "2020-02-26T07:54:30.509Z",
           "route_config": {
             "name": "9080",
             "validate_clusters": false,
@@ -11593,6 +11593,84 @@
                 ],
                 "name": "reviews.bookinfo.svc.cluster.local:9080",
                 "routes": [
+                  {
+                    "decorator": {
+                      "operation": "reviews.bookinfo.svc.cluster.local:9080/*"
+                    },
+                    "match": {
+                      "case_sensitive": true,
+                      "headers": [
+                        {
+                          "exact_match": "jason",
+                          "name": "end-user"
+                        }
+                      ],
+                      "prefix": "/"
+                    },
+                    "metadata": {
+                      "filter_metadata": {
+                        "istio": {
+                          "config": "/apis/networking/v1alpha3/namespaces/bookinfo/virtual-service/reviews"
+                        }
+                      }
+                    },
+                    "route": {
+                      "cluster": "outbound|9080|v2|reviews.bookinfo.svc.cluster.local",
+                      "max_grpc_timeout": "0s",
+                      "retry_policy": {
+                        "host_selection_retry_max_attempts": "5",
+                        "num_retries": 2,
+                        "retriable_status_codes": [
+                          503
+                        ],
+                        "retry_host_predicate": [
+                          {
+                            "name": "envoy.retry_host_predicates.previous_hosts"
+                          }
+                        ],
+                        "retry_on": "connect-failure,refused-stream,unavailable,cancelled,resource-exhausted,retriable-status-codes"
+                      },
+                      "timeout": "0s"
+                    },
+                    "typed_per_filter_config": {
+                      "mixer": {
+                        "@type": "type.googleapis.com/istio.mixer.v1.config.client.ServiceConfig",
+                        "disable_check_calls": true,
+                        "forward_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "reviews.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "reviews"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/reviews"
+                            }
+                          }
+                        },
+                        "mixer_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "reviews.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "reviews"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/reviews"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   {
                     "decorator": {
                       "operation": "reviews.bookinfo.svc.cluster.local:9080/*"
@@ -11938,10 +12016,10 @@
               }
             ]
           },
-          "version_info": "2020-02-26T07:52:53Z/56"
+          "version_info": "2020-02-26T07:54:30Z/57"
         },
         {
-          "last_updated": "2020-02-26T07:52:53.516Z",
+          "last_updated": "2020-02-26T07:54:30.511Z",
           "route_config": {
             "name": "80",
             "validate_clusters": false,
@@ -12480,6 +12558,84 @@
                       "operation": "reviews.bookinfo.svc.cluster.local:80/*"
                     },
                     "match": {
+                      "case_sensitive": true,
+                      "headers": [
+                        {
+                          "exact_match": "jason",
+                          "name": "end-user"
+                        }
+                      ],
+                      "prefix": "/"
+                    },
+                    "metadata": {
+                      "filter_metadata": {
+                        "istio": {
+                          "config": "/apis/networking/v1alpha3/namespaces/bookinfo/virtual-service/reviews"
+                        }
+                      }
+                    },
+                    "route": {
+                      "cluster": "outbound|80|v2|reviews.bookinfo.svc.cluster.local",
+                      "max_grpc_timeout": "0s",
+                      "retry_policy": {
+                        "host_selection_retry_max_attempts": "5",
+                        "num_retries": 2,
+                        "retriable_status_codes": [
+                          503
+                        ],
+                        "retry_host_predicate": [
+                          {
+                            "name": "envoy.retry_host_predicates.previous_hosts"
+                          }
+                        ],
+                        "retry_on": "connect-failure,refused-stream,unavailable,cancelled,resource-exhausted,retriable-status-codes"
+                      },
+                      "timeout": "0s"
+                    },
+                    "typed_per_filter_config": {
+                      "mixer": {
+                        "@type": "type.googleapis.com/istio.mixer.v1.config.client.ServiceConfig",
+                        "disable_check_calls": true,
+                        "forward_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "reviews.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "reviews"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/reviews"
+                            }
+                          }
+                        },
+                        "mixer_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "reviews.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "reviews"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/reviews"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "decorator": {
+                      "operation": "reviews.bookinfo.svc.cluster.local:80/*"
+                    },
+                    "match": {
                       "prefix": "/"
                     },
                     "metadata": {
@@ -12550,7 +12706,7 @@
               }
             ]
           },
-          "version_info": "2020-02-26T07:52:53Z/56"
+          "version_info": "2020-02-26T07:54:30Z/57"
         }
       ],
       "static_route_configs": [

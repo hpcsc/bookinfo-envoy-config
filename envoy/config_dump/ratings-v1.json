@@ -11535,7 +11535,7 @@
           "version_info": "2020-02-26T03:15:09Z/27"
         },
         {
-          "last_updated": "2020-02-26T07:56:22.789Z",
+          "last_updated": "2020-02-26T07:57:54.726Z",
           "route_config": {
             "name": "9080",
             "validate_clusters": false,
@@ -11893,8 +11893,8 @@
                     "typed_per_filter_config": {
                       "envoy.fault": {
                         "@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.HTTPFault",
-                        "delay": {
-                          "fixed_delay": "7s",
+                        "abort": {
+                          "http_status": 500,
                           "percentage": {
                             "denominator": "MILLION",
                             "numerator": 1000000
@@ -12104,10 +12104,10 @@
               }
             ]
           },
-          "version_info": "2020-02-26T07:56:22Z/58"
+          "version_info": "2020-02-26T07:57:54Z/59"
         },
         {
-          "last_updated": "2020-02-26T07:56:22.794Z",
+          "last_updated": "2020-02-26T07:57:54.727Z",
           "route_config": {
             "name": "80",
             "validate_clusters": false,
@@ -12603,8 +12603,8 @@
                     "typed_per_filter_config": {
                       "envoy.fault": {
                         "@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.HTTPFault",
-                        "delay": {
-                          "fixed_delay": "7s",
+                        "abort": {
+                          "http_status": 500,
                           "percentage": {
                             "denominator": "MILLION",
                             "numerator": 1000000
@@ -12882,7 +12882,7 @@
               }
             ]
           },
-          "version_info": "2020-02-26T07:56:22Z/58"
+          "version_info": "2020-02-26T07:57:54Z/59"
         }
       ],
       "static_route_configs": [

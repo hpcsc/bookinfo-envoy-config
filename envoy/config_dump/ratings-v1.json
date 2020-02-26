@@ -11535,7 +11535,7 @@
           "version_info": "2020-02-26T03:15:09Z/27"
         },
         {
-          "last_updated": "2020-02-26T07:54:30.503Z",
+          "last_updated": "2020-02-26T07:56:22.789Z",
           "route_config": {
             "name": "9080",
             "validate_clusters": false,
@@ -11856,6 +11856,94 @@
                       "operation": "ratings.bookinfo.svc.cluster.local:9080/*"
                     },
                     "match": {
+                      "case_sensitive": true,
+                      "headers": [
+                        {
+                          "exact_match": "jason",
+                          "name": "end-user"
+                        }
+                      ],
+                      "prefix": "/"
+                    },
+                    "metadata": {
+                      "filter_metadata": {
+                        "istio": {
+                          "config": "/apis/networking/v1alpha3/namespaces/bookinfo/virtual-service/ratings"
+                        }
+                      }
+                    },
+                    "route": {
+                      "cluster": "outbound|9080|v1|ratings.bookinfo.svc.cluster.local",
+                      "max_grpc_timeout": "0s",
+                      "retry_policy": {
+                        "host_selection_retry_max_attempts": "5",
+                        "num_retries": 2,
+                        "retriable_status_codes": [
+                          503
+                        ],
+                        "retry_host_predicate": [
+                          {
+                            "name": "envoy.retry_host_predicates.previous_hosts"
+                          }
+                        ],
+                        "retry_on": "connect-failure,refused-stream,unavailable,cancelled,resource-exhausted,retriable-status-codes"
+                      },
+                      "timeout": "0s"
+                    },
+                    "typed_per_filter_config": {
+                      "envoy.fault": {
+                        "@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.HTTPFault",
+                        "delay": {
+                          "fixed_delay": "7s",
+                          "percentage": {
+                            "denominator": "MILLION",
+                            "numerator": 1000000
+                          }
+                        }
+                      },
+                      "mixer": {
+                        "@type": "type.googleapis.com/istio.mixer.v1.config.client.ServiceConfig",
+                        "disable_check_calls": true,
+                        "forward_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "ratings.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "ratings"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/ratings"
+                            }
+                          }
+                        },
+                        "mixer_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "ratings.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "ratings"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/ratings"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "decorator": {
+                      "operation": "ratings.bookinfo.svc.cluster.local:9080/*"
+                    },
+                    "match": {
                       "prefix": "/"
                     },
                     "metadata": {
@@ -12016,10 +12104,10 @@
               }
             ]
           },
-          "version_info": "2020-02-26T07:54:30Z/57"
+          "version_info": "2020-02-26T07:56:22Z/58"
         },
         {
-          "last_updated": "2020-02-26T07:54:30.504Z",
+          "last_updated": "2020-02-26T07:56:22.794Z",
           "route_config": {
             "name": "80",
             "validate_clusters": false,
@@ -12478,6 +12566,94 @@
                       "operation": "ratings.bookinfo.svc.cluster.local:80/*"
                     },
                     "match": {
+                      "case_sensitive": true,
+                      "headers": [
+                        {
+                          "exact_match": "jason",
+                          "name": "end-user"
+                        }
+                      ],
+                      "prefix": "/"
+                    },
+                    "metadata": {
+                      "filter_metadata": {
+                        "istio": {
+                          "config": "/apis/networking/v1alpha3/namespaces/bookinfo/virtual-service/ratings"
+                        }
+                      }
+                    },
+                    "route": {
+                      "cluster": "outbound|80|v1|ratings.bookinfo.svc.cluster.local",
+                      "max_grpc_timeout": "0s",
+                      "retry_policy": {
+                        "host_selection_retry_max_attempts": "5",
+                        "num_retries": 2,
+                        "retriable_status_codes": [
+                          503
+                        ],
+                        "retry_host_predicate": [
+                          {
+                            "name": "envoy.retry_host_predicates.previous_hosts"
+                          }
+                        ],
+                        "retry_on": "connect-failure,refused-stream,unavailable,cancelled,resource-exhausted,retriable-status-codes"
+                      },
+                      "timeout": "0s"
+                    },
+                    "typed_per_filter_config": {
+                      "envoy.fault": {
+                        "@type": "type.googleapis.com/envoy.config.filter.http.fault.v2.HTTPFault",
+                        "delay": {
+                          "fixed_delay": "7s",
+                          "percentage": {
+                            "denominator": "MILLION",
+                            "numerator": 1000000
+                          }
+                        }
+                      },
+                      "mixer": {
+                        "@type": "type.googleapis.com/istio.mixer.v1.config.client.ServiceConfig",
+                        "disable_check_calls": true,
+                        "forward_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "ratings.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "ratings"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/ratings"
+                            }
+                          }
+                        },
+                        "mixer_attributes": {
+                          "attributes": {
+                            "destination.service.host": {
+                              "string_value": "ratings.bookinfo.svc.cluster.local"
+                            },
+                            "destination.service.name": {
+                              "string_value": "ratings"
+                            },
+                            "destination.service.namespace": {
+                              "string_value": "bookinfo"
+                            },
+                            "destination.service.uid": {
+                              "string_value": "istio://bookinfo/services/ratings"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "decorator": {
+                      "operation": "ratings.bookinfo.svc.cluster.local:80/*"
+                    },
+                    "match": {
                       "prefix": "/"
                     },
                     "metadata": {
@@ -12706,7 +12882,7 @@
               }
             ]
           },
-          "version_info": "2020-02-26T07:54:30Z/57"
+          "version_info": "2020-02-26T07:56:22Z/58"
         }
       ],
       "static_route_configs": [
